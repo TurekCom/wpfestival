@@ -1,0 +1,112 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  repository-hygiene:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Scan for accidental local paths
+        shell: pwsh
+        run: |
+          $patterns = @(
+            'C:\\Users\\',
+            'C:/Users/',
+            '/abs/path',
+            '/c/Users/'
+          )
+          $files = Get-ChildItem -Recurse -File | Where-Object {
+            $_.FullName -notmatch '\\.git\\' -and
+            $_.FullName -notmatch '\\.gradle\\' -and
+            $_.FullName -notmatch '\\build\\'
+          }
+          $hits = @()
+          foreach ($file in $files) {
+            $content = Get-Content $file.FullName -Raw -ErrorAction SilentlyContinue
+            foreach ($pattern in $patterns) {
+              if ($content -match $pattern) {
+                $hits += "$($file.FullName) :: $pattern"
+              }
+            }
+          }
+          if ($hits.Count -gt 0) {
+            $hits | ForEach-Object { Write-Host $_ }
+            throw 'Found machine-specific absolute paths in tracked files.'
+          }
+
+      - name: Validate public placeholders
+        shell: pwsh
+        run: |
+          $required = @(
+            'runtime/README.md',
+            'android/app/src/main/jniLibs/README.md',
+            'android/app/src/main/assets/runtime/common/README.md',
+            'docs/BUILDING.md',
+            'docs/LEGAL.md'
+          )
+          foreach ($path in $required) {
+            if (-not (Test-Path $path)) {
+              throw "Missing expected placeholder or documentation file: $path"
+            }
+          }
+
+  android-unit-tests:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: android
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Run Android unit tests
+        run: .\gradlew.bat testDebugUnitTest
+
+      - name: Upload Android test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-unit-test-reports
+          path: |
+            android/app/build/reports/tests
+            android/build/reports/problems
+
+  source-packages:
+    runs-on: windows-latest
+    needs:
+      - repository-hygiene
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Create source archives
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force dist | Out-Null
+          Compress-Archive -Path README.md,LICENSE,CHANGELOG.md,.gitignore,docs,runtime,windows,third_party -DestinationPath dist/wpfestival-windows-sapi5-source-ci.zip -Force
+          Compress-Archive -Path README.md,LICENSE,CHANGELOG.md,.gitignore,docs,runtime,android,third_party -DestinationPath dist/wpfestival-android-source-ci.zip -Force
+
+      - name: Upload source archives
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-packages
+          path: dist/*.zip

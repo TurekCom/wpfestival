@@ -1,11 +1,42 @@
 # wpfestival
 
+[![CI](https://github.com/TurekCom/wpfestival/actions/workflows/ci.yml/badge.svg)](https://github.com/TurekCom/wpfestival/actions/workflows/ci.yml)
+
 Reverse-engineered tooling and wrappers around the legacy Polish WP/Festival voice, prepared in two forms:
 
 - Windows SAPI5 wrapper with accessible configuration UI
 - Android `TextToSpeechService` with TalkBack-oriented text normalization
 
-This repository is intentionally **source-only**. It does **not** contain the proprietary WP runtime, voice database, recovered installers, signed binaries, or release keys.
+![wpfestival overview](docs/images/overview.svg)
+
+## Downloads
+
+For end users:
+
+- Windows installers: https://github.com/TurekCom/wpfestival/releases/tag/windows-sapi5-source-v0.4.1
+- Android APK: https://github.com/TurekCom/wpfestival/releases/tag/android-source-v0.2.12
+
+For source archives:
+
+- Windows SAPI5 source package is attached to the Windows release
+- Android source package is attached to the Android release
+
+## Quick start
+
+### Windows
+
+1. Download the `.exe` installer from the Windows release page.
+2. Install the male and optionally the female package.
+3. Restart your screen reader or any SAPI host after installation.
+4. Open the installed configuration shortcut to tune variant, rate, volume, and pitch.
+
+### Android
+
+1. Download the `.apk` from the Android release page.
+2. Install the APK and select `WP Festival` as the system TTS engine.
+3. Open the settings screen to choose profile, variant, dictionary file, emoji reading, and punctuation verbosity.
+
+The git history is intentionally **source-first**. It does **not** track the proprietary WP runtime, voice database, recovered installers, or release keys.
 
 ## Repository layout
 
@@ -20,14 +51,13 @@ This repository is intentionally **source-only**. It does **not** contain the pr
 - `runtime/`
   Placeholder location for locally supplied proprietary runtime files. Not tracked in releases.
 
-## What is not included
+## What is not tracked in git
 
 - original WP installer payloads
 - recovered `wp_runtime_lib`
 - rebuilt `festival.exe`
 - Android `jniLibs` outputs
-- signed APK/AAB files
-- signed Windows installers
+- release signing keys
 
 Those parts are excluded on purpose. See [docs/LEGAL.md](docs/LEGAL.md) and [docs/BUILDING.md](docs/BUILDING.md).
 

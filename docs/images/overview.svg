@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">wpfestival overview</title>
+  <desc id="desc">Overview of the Windows SAPI5 and Android TTS wrappers around the legacy WP Festival voice.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="420" fill="url(#bg)"/>
+  <rect x="40" y="40" width="1120" height="340" rx="24" fill="#111827" stroke="#334155" stroke-width="2"/>
+  <text x="80" y="110" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="700">wpfestival</text>
+  <text x="80" y="150" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="20">Legacy WP/Festival voice wrapped for modern Windows and Android environments.</text>
+
+  <rect x="80" y="200" width="310" height="120" rx="18" fill="#0b1220" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="110" y="245" fill="#dbeafe" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">Windows SAPI5</text>
+  <text x="110" y="280" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="18">Accessible configuration UI</text>
+  <text x="110" y="305" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="18">Male and female token namespaces</text>
+
+  <rect x="445" y="185" width="310" height="150" rx="18" fill="url(#accent)"/>
+  <text x="505" y="240" fill="#052e2b" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700">Legacy WP Voice</text>
+  <text x="500" y="275" fill="#083344" font-family="Segoe UI, Arial, sans-serif" font-size="18">Recovered runtime inputs</text>
+  <text x="495" y="300" fill="#083344" font-family="Segoe UI, Arial, sans-serif" font-size="18">Festival and Speech Tools core</text>
+
+  <rect x="810" y="200" width="310" height="120" rx="18" fill="#0b1220" stroke="#7c3aed" stroke-width="2"/>
+  <text x="840" y="245" fill="#ede9fe" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">Android TTS</text>
+  <text x="840" y="280" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="18">TalkBack-oriented text normalization</text>
+  <text x="840" y="305" fill="#cbd5e1" font-family="Segoe UI, Arial, sans-serif" font-size="18">BlackBox-style settings UI</text>
+
+  <path d="M390 260 L445 260" stroke="#60a5fa" stroke-width="6" stroke-linecap="round"/>
+  <path d="M755 260 L810 260" stroke="#22d3ee" stroke-width="6" stroke-linecap="round"/>
+</svg>
