@@ -1,0 +1,33 @@
+# General
+.DS_Store
+Thumbs.db
+
+# Windows / CMake
+build/
+out/
+*.user
+*.suo
+*.vcxproj.user
+*.obj
+*.o
+*.pdb
+*.ilk
+*.lib
+*.dll
+*.exe
+
+# Android / Gradle
+.gradle/
+.kotlin/
+local.properties
+release-signing.properties
+*.jks
+app/build/
+build/
+
+# Runtime and release outputs
+runtime/wp_runtime_lib/
+runtime/festival.exe
+android/app/src/main/jniLibs/**/*.so
+android/app/src/main/assets/runtime/common/wp_runtime_lib/
+dist/

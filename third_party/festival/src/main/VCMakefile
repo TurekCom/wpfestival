@@ -1,0 +1,25 @@
+# Makefile for MicroCruft Visual C++
+
+TOP=..\..
+
+DIRNAME=srcmain
+
+todo: default_target
+
+OBJS = festival_main.obj audsp.obj festival_client.obj
+
+CFLAGS = $(DEBUGFLAGS) $(OPTFLAGS) $(INCLUDEFLAGS)
+
+INLIB = ..\..\$(LIB_DIR)\libFestival.lib
+
+ALL = festival.exe festival_client.exe audsp.exe
+!include $(TOP)\config\vc_common_make_rules
+
+festival.exe : festival_main.obj $(VCLIBS)
+	link/nologo $(LINKFLAGS) /out:festival.exe festival_main.obj $(VCLIBS) $(WINLIBS)
+
+festival_client.exe : festival_client.obj $(VCLIBS)
+	link/nologo $(LINKFLAGS) /out:festival_client.exe festival_client.obj $(VCLIBS) $(WINLIBS)
+
+audsp.exe : audsp.obj $(VCLIBS)
+	link/nologo $(LINKFLAGS) /out:audsp.exe audsp.obj $(VCLIBS) $(WINLIBS)

@@ -1,0 +1,337 @@
+remake libraries ../../src/lib/libFestival.a
+/c/Users/turek/AppData/Local/Android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android24-clang++ -O3 -Wall     -o festival festival_main.o   -L../../src/lib -lFestival -L../../../speech_tools/lib -lestools -L../../../speech_tools/lib -lestbase -L../../../speech_tools/lib -leststring    -ldl -lm  
+/c/Users/turek/AppData/Local/Android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android24-clang++ -c -fno-implicit-templates -std=gnu++14 -D__isnanf=isnanf -O3 -Wall -I../../src/include -I../../../speech_tools/include festival_client.cc
+In file included from festival_client.cc:46:
+In file included from ../../src/include/festival.h:47:
+In file included from ../../../speech_tools/include/EST.h:49:
+In file included from ../../../speech_tools/include/EST_string_aux.h:45:
+In file included from ../../../speech_tools/include/EST_types.h:44:
+../../../speech_tools/include/EST_TVector.h:317:32: warning: misleading indentation; statement is not part of the previous 'for' [-Wmisleading-indentation]
+  317 |             st << m(i) << " "; st << endl; 
+      |                                ^
+../../../speech_tools/include/EST_TVector.h:316:9: note: previous statement is here
+  316 |         for (i = 0; i < m.n(); ++i) 
+      |         ^
+In file included from festival_client.cc:46:
+In file included from ../../src/include/festival.h:47:
+In file included from ../../../speech_tools/include/EST.h:49:
+In file included from ../../../speech_tools/include/EST_string_aux.h:45:
+In file included from ../../../speech_tools/include/EST_types.h:47:
+In file included from ../../../speech_tools/include/EST_FMatrix.h:44:
+In file included from ../../../speech_tools/include/EST_TSimpleMatrix.h:46:
+../../../speech_tools/include/EST_TMatrix.h:317:50: warning: misleading indentation; statement is not part of the previous 'for' [-Wmisleading-indentation]
+  317 |                 st << a.a_no_check(i, j) << " "; st << endl;
+      |                                                  ^
+../../../speech_tools/include/EST_TMatrix.h:316:13: note: previous statement is here
+  316 |             for (j = 0; j < a.num_columns(); ++j) 
+      |             ^
+In file included from festival_client.cc:46:
+In file included from ../../src/include/festival.h:47:
+In file included from ../../../speech_tools/include/EST.h:53:
+In file included from ../../../speech_tools/include/EST_util_class.h:48:
+../../../speech_tools/include/EST_Token.h:121:33: warning: all paths through this function will call itself [-Winfinite-recursion]
+  121 |     const EST_String &S() const { return S(); }
+      |                                 ^
+In file included from festival_client.cc:46:
+In file included from ../../src/include/festival.h:47:
+In file included from ../../../speech_tools/include/EST.h:62:
+In file included from ../../../speech_tools/include/EST_speech_class.h:44:
+In file included from ../../../speech_tools/include/EST_wave_aux.h:52:
+In file included from ../../../speech_tools/include/ling_class/EST_Relation.h:48:
+../../../speech_tools/include/ling_class/EST_Item.h:238:50: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  238 |     EST_Item_Content *contents() const { return (this == 0) ? 0 : p_contents;}
+      |                                                  ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:245:15: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  245 |     { return (this == 0) ? EST_String::Empty : f("name",0).string(); }
+      |               ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:249:11: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to true [-Wtautological-undefined-compare]
+  249 |     { if (this != 0) p_contents->set_name(name); }
+      |           ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:257:6: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  257 |         if (this == 0)
+      |             ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:292:6: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  292 |         if (this == 0) 
+      |             ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:311:15: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  311 |     { return (this == 0) ? 0 : p_contents->Relation(relname); }
+      |               ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:315:15: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  315 |     { return (this == 0) ? 0 : p_contents->in_relation(relname); }
+      |               ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:325:18: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  325 |        { return (this == 0) ? 0 : p_relation; }
+      |                  ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:342:37: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  342 |     EST_Item *next() const { return this == 0 ? 0 : n; }
+      |                                     ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:344:37: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  344 |     EST_Item *prev() const { return this == 0 ? 0 : p; }
+      |                                     ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:346:37: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  346 |     EST_Item *down() const { return this == 0 ? 0 : d; }
+      |                                     ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:348:37: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  348 |     EST_Item *up() const   { return this == 0 ? 0 : u; }
+      |                                     ^~~~    ~
+In file included from festival_client.cc:46:
+In file included from ../../src/include/festival.h:47:
+In file included from ../../../speech_tools/include/EST.h:62:
+In file included from ../../../speech_tools/include/EST_speech_class.h:44:
+In file included from ../../../speech_tools/include/EST_wave_aux.h:52:
+../../../speech_tools/include/ling_class/EST_Relation.h:122:46: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  122 |     const EST_String &name() const { return (this == 0) ? EST_String::Empty : p_name; }
+      |                                              ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Relation.h:125:37: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  125 |     EST_Item *head() const {return (this == 0) ? 0 : p_head;}
+      |                                     ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Relation.h:131:37: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  131 |     EST_Item *tail() const {return (this == 0) ? 0 : p_tail;}
+      |                                     ^~~~    ~
+18 warnings generated.
+/c/Users/turek/AppData/Local/Android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android24-clang++ -O3 -Wall     -o festival_client festival_client.o   -L../../src/lib -lFestival -L../../../speech_tools/lib -lestools -L../../../speech_tools/lib -lestbase -L../../../speech_tools/lib -leststring    -ldl -lm  
+/c/Users/turek/AppData/Local/Android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android24-clang++ -c -fno-implicit-templates -std=gnu++14 -D__isnanf=isnanf -O3 -Wall -I../../src/include -I../../../speech_tools/include audsp.cc
+In file included from audsp.cc:51:
+In file included from ../../../speech_tools/include/EST.h:49:
+In file included from ../../../speech_tools/include/EST_string_aux.h:45:
+In file included from ../../../speech_tools/include/EST_types.h:44:
+../../../speech_tools/include/EST_TVector.h:317:32: warning: misleading indentation; statement is not part of the previous 'for' [-Wmisleading-indentation]
+  317 |             st << m(i) << " "; st << endl; 
+      |                                ^
+../../../speech_tools/include/EST_TVector.h:316:9: note: previous statement is here
+  316 |         for (i = 0; i < m.n(); ++i) 
+      |         ^
+In file included from audsp.cc:51:
+In file included from ../../../speech_tools/include/EST.h:49:
+In file included from ../../../speech_tools/include/EST_string_aux.h:45:
+In file included from ../../../speech_tools/include/EST_types.h:47:
+In file included from ../../../speech_tools/include/EST_FMatrix.h:44:
+In file included from ../../../speech_tools/include/EST_TSimpleMatrix.h:46:
+../../../speech_tools/include/EST_TMatrix.h:317:50: warning: misleading indentation; statement is not part of the previous 'for' [-Wmisleading-indentation]
+  317 |                 st << a.a_no_check(i, j) << " "; st << endl;
+      |                                                  ^
+../../../speech_tools/include/EST_TMatrix.h:316:13: note: previous statement is here
+  316 |             for (j = 0; j < a.num_columns(); ++j) 
+      |             ^
+In file included from audsp.cc:51:
+In file included from ../../../speech_tools/include/EST.h:53:
+In file included from ../../../speech_tools/include/EST_util_class.h:48:
+../../../speech_tools/include/EST_Token.h:121:33: warning: all paths through this function will call itself [-Winfinite-recursion]
+  121 |     const EST_String &S() const { return S(); }
+      |                                 ^
+In file included from audsp.cc:51:
+In file included from ../../../speech_tools/include/EST.h:62:
+In file included from ../../../speech_tools/include/EST_speech_class.h:44:
+In file included from ../../../speech_tools/include/EST_wave_aux.h:52:
+In file included from ../../../speech_tools/include/ling_class/EST_Relation.h:48:
+../../../speech_tools/include/ling_class/EST_Item.h:238:50: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  238 |     EST_Item_Content *contents() const { return (this == 0) ? 0 : p_contents;}
+      |                                                  ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:245:15: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  245 |     { return (this == 0) ? EST_String::Empty : f("name",0).string(); }
+      |               ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:249:11: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to true [-Wtautological-undefined-compare]
+  249 |     { if (this != 0) p_contents->set_name(name); }
+      |           ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:257:6: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  257 |         if (this == 0)
+      |             ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:292:6: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  292 |         if (this == 0) 
+      |             ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:311:15: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  311 |     { return (this == 0) ? 0 : p_contents->Relation(relname); }
+      |               ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:315:15: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  315 |     { return (this == 0) ? 0 : p_contents->in_relation(relname); }
+      |               ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:325:18: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  325 |        { return (this == 0) ? 0 : p_relation; }
+      |                  ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:342:37: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  342 |     EST_Item *next() const { return this == 0 ? 0 : n; }
+      |                                     ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:344:37: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  344 |     EST_Item *prev() const { return this == 0 ? 0 : p; }
+      |                                     ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:346:37: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  346 |     EST_Item *down() const { return this == 0 ? 0 : d; }
+      |                                     ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Item.h:348:37: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  348 |     EST_Item *up() const   { return this == 0 ? 0 : u; }
+      |                                     ^~~~    ~
+In file included from audsp.cc:51:
+In file included from ../../../speech_tools/include/EST.h:62:
+In file included from ../../../speech_tools/include/EST_speech_class.h:44:
+In file included from ../../../speech_tools/include/EST_wave_aux.h:52:
+../../../speech_tools/include/ling_class/EST_Relation.h:122:46: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  122 |     const EST_String &name() const { return (this == 0) ? EST_String::Empty : p_name; }
+      |                                              ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Relation.h:125:37: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  125 |     EST_Item *head() const {return (this == 0) ? 0 : p_head;}
+      |                                     ^~~~    ~
+../../../speech_tools/include/ling_class/EST_Relation.h:131:37: warning: 'this' pointer cannot be null in well-defined C++ code; comparison may be assumed to always evaluate to false [-Wtautological-undefined-compare]
+  131 |     EST_Item *tail() const {return (this == 0) ? 0 : p_tail;}
+      |                                     ^~~~    ~
+audsp.cc:242:9: warning: variable 'pid' set but not used [-Wunused-but-set-variable]
+  242 |     int pid;
+      |         ^
+19 warnings generated.
+/c/Users/turek/AppData/Local/Android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android24-clang   audsp.o   -o audsp
+ld.lld: error: undefined symbol: operator new(unsigned long)
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::push(Command*))
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced 1 more times
+
+ld.lld: error: undefined symbol: operator delete(void*)
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::pop())
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::clear())
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced 7 more times
+
+ld.lld: error: undefined symbol: std::__ndk1::cerr
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+>>> referenced 5 more times
+
+ld.lld: error: undefined symbol: std::__ndk1::basic_ostream<char, std::__ndk1::char_traits<char>>::operator<<(int)
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+
+ld.lld: error: undefined symbol: std::__ndk1::ios_base::getloc() const
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+>>> referenced by audsp.cc
+>>>               audsp.o:(std::__ndk1::basic_ostream<char, std::__ndk1::char_traits<char>>& std::__ndk1::__put_character_sequence[abi:ne190000]<char, std::__ndk1::char_traits<char>>(std::__ndk1::basic_ostream<char, std::__ndk1::char_traits<char>>&, char const*, unsigned long))
+
+ld.lld: error: undefined symbol: std::__ndk1::ctype<char>::id
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+>>> referenced 3 more times
+
+ld.lld: error: undefined symbol: std::__ndk1::locale::use_facet(std::__ndk1::locale::id&) const
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+>>> referenced by audsp.cc
+>>>               audsp.o:(std::__ndk1::basic_ostream<char, std::__ndk1::char_traits<char>>& std::__ndk1::__put_character_sequence[abi:ne190000]<char, std::__ndk1::char_traits<char>>(std::__ndk1::basic_ostream<char, std::__ndk1::char_traits<char>>&, char const*, unsigned long))
+
+ld.lld: error: undefined symbol: std::__ndk1::locale::~locale()
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+>>> referenced 3 more times
+
+ld.lld: error: undefined symbol: std::__ndk1::basic_ostream<char, std::__ndk1::char_traits<char>>::put(char)
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+
+ld.lld: error: undefined symbol: std::__ndk1::basic_ostream<char, std::__ndk1::char_traits<char>>::flush()
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+
+ld.lld: error: undefined symbol: operator<<(std::__ndk1::basic_ostream<char, std::__ndk1::char_traits<char>>&, EST_String const&)
+>>> referenced by audsp.cc
+>>>               audsp.o:(CQueue::display() const)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+
+ld.lld: error: undefined symbol: EST_String::EST_String(char const*)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced 14 more times
+
+ld.lld: error: undefined symbol: operator+(EST_String const&, char const*)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced 2 more times
+
+ld.lld: error: undefined symbol: parse_command_line(int, char**, EST_String const&, EST_TList<EST_String>&, EST_Option&, int)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+
+ld.lld: error: undefined symbol: EST_Chunk::~EST_Chunk()
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced 25 more times
+
+ld.lld: error: undefined symbol: EST_Chunk::operator delete(void*)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced 25 more times
+
+ld.lld: error: undefined symbol: EST_TKVL<EST_String, EST_String>::present(EST_String const&) const
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+
+ld.lld: error: undefined symbol: EST_TKVL<EST_String, EST_String>::val(EST_String const&, bool)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+
+ld.lld: error: undefined symbol: EST_TKVL<EST_String, EST_String>::add_item(EST_String const&, EST_String const&, int)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+>>> referenced 5 more times
+
+ld.lld: error: undefined symbol: EST_Option::ival(EST_String const&, int) const
+>>> referenced by audsp.cc
+>>>               audsp.o:(main)
+
+ld.lld: error: too many errors emitted, stopping now (use --error-limit=0 to see all errors)
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make: *** [<wbudowane>: audsp] Błąd 1

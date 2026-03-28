@@ -1,0 +1,152 @@
+# WP Festival Android
+
+Stan na 2026-03-28.
+
+## Gotowe
+- Androidowy silnik TTS jako `TextToSpeechService` w projekcie `android_wp_festival`.
+- Ekran ustawień w stylu zbliżonym do BlackBox z wyborem:
+  - typu głosu `Męski` / `Żeński`
+  - wariantu
+  - prędkości
+  - wysokości
+  - głośności
+- Przełącznik `Czytaj emoji i emotikony`.
+- Opcja czytania interpunkcji dla trybu zwykłego fokusu:
+  - `Wszystkie`
+  - `Niektóre`
+  - `Większość`
+  - `Nic`
+- Interpunkcja przy nawigacji po pojedynczym znaku nadal jest czytana zawsze, niezależnie od powyższego ustawienia.
+- Import słownika TXT w formacie `słowo=wymowa`.
+- Preview odsłuchu z poziomu aplikacji.
+- Spakowany runtime WP/Festival w `assets/runtime/common/wp_runtime_lib`.
+- Natywny backend `festival` dla dwóch ABI:
+  - `arm64-v8a`
+  - `x86_64`
+- Warstwa normalizacji tekstu przeniesiona z Androidowego `blackbox`:
+  - polskie nazwy pojedynczych znaków,
+  - rozwijanie ASCII emotikonów,
+  - odczyt emoji z CLDR oraz fallbacków,
+  - sanityzacja wejścia pod stary runtime Festival.
+- Rozszerzony zakres regulatorów:
+  - prędkość `0..200%`,
+  - wysokość `0..200%`,
+  - głośność `0..200%`.
+- Dodatkowa warstwa pod dostępność i teksty techniczne:
+  - normalizacja niewidzialnych znaczników kierunku i nietypowych spacji,
+  - rozwijanie `1,5×` / `1.5x` do formy czytelnej dla starego Festivala,
+  - rozwijanie tokenów typu URL, udział SMB, nazwy ukrytych katalogów i identyfikatory z `@`, `://`, `.`, `_`, `=` itp.,
+  - dzielenie długich wypowiedzi na krótsze segmenty, żeby stary Festival nie wpadał na timeout przy dużych polach tekstowych,
+  - transliteracja łacińskich znaków spoza polskiego i pomijanie obcych skryptów, gdy mogą blokować syntezę,
+  - retry per segment, żeby pojedynczy problematyczny fragment nie kasował całej wypowiedzi.
+- Ulepszona odporność pod krótkie etykiety UI:
+  - fallback działa także dla jednosegmentowych etykiet typu `WhatsApp – 1 powiadomienie` i `Ikona aplikacji`,
+  - typograficzne myślniki, cudzysłowy, wielokropki i punktorowe separatory są normalizowane do bezpiecznej postaci,
+  - formy typu `Przesłałeś(aś)` są upraszczane przed wysłaniem do Festivala,
+  - całkowicie nieobsługiwane napisy, np. wyłącznie w chińskim czy innym obcym skrypcie, dostają bezpieczny placeholder zamiast ciszy,
+  - obcy albo uszkodzony znak w środku słowa jest pomijany zamiast wyciszać resztę tokenu.
+- Dodatkowe poprawki w `0.2.9`:
+  - `CHECK_TTS_DATA` zwraca teraz poprawny wpis locale-style dla Android Settings zamiast własnych identyfikatorów głosów,
+  - znaki obce lub uszkodzone w środku słowa są pomijane bez rozbijania reszty słowa,
+  - warstwa sanityzacji pod Windows-1250 usuwa takie znaki również tuż przed uruchomieniem Festivala.
+
+## Artefakty
+- Release APK:
+  - `C:\Users\turek\Desktop\wp\dist\android\WPFestivalAndroid-0.2.12-release.apk`
+- Release AAB:
+  - `C:\Users\turek\Desktop\wp\dist\android\WPFestivalAndroid-0.2.12-release.aab`
+- Release bundle zip:
+  - `C:\Users\turek\Desktop\wp\dist\android\WPFestivalAndroid-0.2.12-release-bundle.zip`
+- Checksums:
+  - `C:\Users\turek\Desktop\wp\dist\android\WPFestivalAndroid-0.2.12-SHA256.txt`
+- Poprzednie artefakty `0.2.1`, `0.2.2`, `0.2.3`, `0.2.5`, `0.2.6`, `0.2.7`, `0.2.8`, `0.2.9`, `0.2.10` i `0.2.11` zostawiłem w `dist\android` do porównania.
+
+## Ważne uwagi
+- Wariant żeński na Androidzie, tak jak w wersji Windows SAPI, jest profilem/presetem na tym samym odzyskanym głosie WP, a nie osobną oryginalną bazą nagrań.
+- Backend Festival jest uruchamiany z `nativeLibraryDir`, a dane głosu są kopiowane do `filesDir` przy pierwszym uruchomieniu.
+- APK zawiera oba backendy i potwierdzono obecność:
+  - `lib/arm64-v8a/libwpfestival_exec.so`
+  - `lib/x86_64/libwpfestival_exec.so`
+- Wersja `0.2.12` usuwa już z aplikacji wbudowaną historię accessibility; diagnostyka została wykorzystana tylko jako etap dochodzenia do stabilnego pipeline tekstu.
+
+## Zweryfikowano end-to-end
+- Na fizycznym telefonie `arm64-v8a`:
+  - ekran ustawień uruchamia się poprawnie,
+  - preview nie wywala już aplikacji,
+  - runtime `festival` uruchamia się z `nativeLibraryDir`,
+  - synteza kończy się poprawnie i zwraca PCM przez `TextToSpeechService`.
+- Na fizycznym telefonie `Pixel 9 Pro` po buildzie `0.2.2`:
+  - aplikacja zainstalowała się jako `versionName=0.2.2`, `versionCode=4`,
+  - domyślny tekst preview z emoji przechodzi przez normalizator i jest czytany poprawnie,
+  - po wyłączeniu `Czytaj emoji i emotikony` surowe emoji nie powodują już wyjścia `festival` z kodem `255`,
+  - po ponownym włączeniu opcji preview dalej działa poprawnie.
+- Na fizycznym telefonie `Pixel 9 Pro` po buildzie `0.2.3`:
+  - aplikacja zainstalowała się jako `versionName=0.2.3`, `versionCode=5`,
+  - ekran ustawień pokazuje sekcję słownika TXT i rozszerzone zakresy suwaków,
+  - przycisk `Dodaj słownik TXT` otwiera systemowy picker plików,
+  - preview nadal działa poprawnie po zmianach w ustawieniach i pipeline tekstu.
+- Na fizycznym telefonie `Pixel 9 Pro` po buildzie `0.2.5`:
+  - aplikacja zainstalowała się jako `versionName=0.2.5`, `versionCode=7`,
+  - aktywny jest dodatkowy serwis `WP Festival - diagnostyka dostępności`,
+  - ekran `Historia dostępności` pokazuje wpisy zdarzeń z innych aplikacji,
+  - poprawione są znaczniki czasu wpisów,
+  - odfiltrowane są wpisy generowane przez własny ekran historii, więc log nie zapętla się sam na sobie.
+- Na fizycznym telefonie `Pixel 9 Pro` po buildzie `0.2.6`:
+  - aplikacja zainstalowała się jako `versionName=0.2.6`, `versionCode=8`,
+  - log accessibility z WhatsAppa, DocumentsUI i Ustawień potwierdził, że problematyczne elementy były poprawnie wystawiane przez aplikacje,
+  - poprawiono warstwę normalizacji po stronie syntezy pod ciągi typu `‎1,5×`, `debian | sftp://...`, `TalkBack | Włączono / ...` i podobne,
+  - dodano segmentację długich wypowiedzi, co jest istotne dla pola historii i innych dużych bloków tekstu.
+- Na fizycznym telefonie `Pixel 9 Pro` po buildzie `0.2.7`:
+  - aplikacja zainstalowała się jako `versionName=0.2.7`, `versionCode=9`,
+  - łacińskie diakrytyki spoza polskiego są upraszczane do podstawowych liter,
+  - skrypty typu cyrylica, arabski, chiński i inne nieobsługiwane przez stary Festival są pomijane zamiast ryzykować zablokowanie całej syntezy,
+  - pojedynczy problematyczny segment jest upraszczany albo pomijany zamiast wyciszać cały utterance.
+- Na fizycznym telefonie `Pixel 9 Pro` po buildzie `0.2.8`:
+  - aplikacja zainstalowała się jako `versionName=0.2.8`, `versionCode=10`,
+  - logcat pokazał realny przypadek awarii na krótkiej etykiecie `WhatsApp – 1 powiadomienie`, co doprowadziło do poprawki fallbacku jednosegmentowego,
+  - krótki ekran historii został przebudowany na fokusowalną listę wpisów i potwierdzono to zrzutem `uiautomator`,
+  - ekran historii po starcie wystawia osobne elementy typu `1. 16:47:25.084. Facebook. ...`, zamiast jednego wielkiego pola tekstowego,
+  - release `0.2.8` jest już wgrany na urządzenie.
+- Na fizycznym telefonie `Pixel 9 Pro` po buildzie `0.2.9`:
+  - aplikacja zainstalowała się jako `versionName=0.2.9`, `versionCode=11`,
+  - nowe logi accessibility potwierdziły problematyczne wpisy z Facebooka, Messengera, WhatsAppa i pickerów plików,
+  - bezpośredni start `com.android.settings.TTS_SETTINGS` nie wygenerował już nowego `AndroidRuntime` crasha,
+  - wpis `TextToSpeechSettingsActivity` pojawia się poprawnie w `dumpsys activity activities`,
+  - testy JVM pokrywają teraz także omijanie „dziwnych” znaków w środku słowa i format danych `CHECK_TTS_DATA`.
+- Na fizycznym telefonie `Pixel 9 Pro` po buildzie `0.2.10`:
+  - aplikacja zainstalowała się jako `versionName=0.2.10`, `versionCode=12`,
+  - krótkie, powtarzalne etykiety UI mogą teraz korzystać z pamięci podręcznej PCM, co skraca czas do pierwszego dźwięku przy wielokrotnych fokusach typu `Facebook`, `WhatsApp`, `Powiadomienia, 5 z 6` i `Szczegółowość`,
+  - długie wypowiedzi są zwracane do `SynthesisCallback` segment po segmencie zamiast po pełnym wyrenderowaniu całości, więc pierwsze słowa trafiają do TalkBacka wcześniej,
+  - facebookowe i systemowe etykiety powiadomień są dodatkowo skracane, a sekwencje powtarzanych emoji są kompresowane do formy typu `cztery razy ...`,
+  - testy JVM pokrywają teraz także skracanie etykiet powiadomień i agresywniejsze cięcie długich wierszy pod Festival.
+- Na fizycznym telefonie `Pixel 9 Pro` po buildzie `0.2.11`:
+  - aplikacja zainstalowała się jako `versionName=0.2.11`, `versionCode=13`,
+  - logcat ujawnił konkretny powód części „niemówionych” fokusów w trybie domyślnym: stary Festival wywracał się na znakach cudzysłowu wewnątrz etykiet z Facebooka,
+  - warstwa normalizacji usuwa teraz takie cudzysłowy i spłaszcza wielokrotne kropki przed wysłaniem tekstu do Festivala,
+  - przerwania `audioAvailable` podczas szybkiej zmiany fokusu są traktowane jak zwykłe zatrzymanie, a nie twardy błąd silnika.
+- Na fizycznym telefonie `Pixel 9 Pro` po buildzie `0.2.12`:
+  - aplikacja zainstalowała się jako `versionName=0.2.12`, `versionCode=14`,
+  - z ustawień zniknęła wbudowana historia accessibility i powiązany serwis diagnostyczny,
+  - dodano poziomy czytania interpunkcji dla zwykłego fokusu TalkBacka: `Wszystkie`, `Niektóre`, `Większość`, `Nic`,
+  - przy pojedynczym znaku albo symbolu nadal zwracana jest polska nazwa znaku, niezależnie od poziomu interpunkcji,
+  - domyślny poziom interpunkcji jest nieinwazyjny i zostawia zwykłą prozodię zdań, a wyższe poziomy verbalizują znaki dopiero świadomie,
+  - heurystyka „śmieciowego” znaku działa teraz tylko dla znaku wbitego w środek tokenu bez odstępu, więc przecinki między słowami nie znikają błędnie.
+
+## Dodatkowa diagnoza
+- Poprzednia wersja padała w preview na `TextToSpeech.getVoices()` zanim silnik był gotowy.
+- Pierwszy build `arm64-v8a` padał w natywnym `festival` przy tokenizacji tekstu.
+- Wersja `0.2.2` ujawniła dodatkowy problem: przy wyłączonym czytaniu emoji surowe emoji trafiały do starego Festivala i kończyły proces kodem `255`.
+- Naprawa polega na dwóch warstwach:
+  - rozwijaniu emoji do nazw, gdy opcja jest włączona,
+  - sanityzacji resztkowych znaków niebezpiecznych dla Festivala, gdy opcja jest wyłączona.
+- Wersja `0.2.3` przenosi też słownik z `blackbox` i wykonuje migrację starej skali ustawień do nowej skali `0..200%`.
+- Androidowe `cmd accessibility start-trace` na tym Pixelu wywala się po stronie systemu `NullPointerException`, więc nie da się na nim polegać jako narzędziu diagnostycznym.
+- Wersja `0.2.5` omija ten problem własnym logerem accessibility i pozwala sprawdzać, jakie `text` / `contentDescription` aplikacje faktycznie wystawiają do usług dostępności.
+- Wersja `0.2.6` domyka drugi etap: po analizie realnego logu accessibility wzmacnia normalizację znaków i długich treści po stronie syntezy, czyli tam, gdzie faktycznie powstawała cisza mimo obecnego tekstu w eventach.
+- Wersja `0.2.7` domyka trzeci etap: dodaje agresywniejszy fallback dla obcych skryptów i nietypowych diakrytyków oraz retry per segment, żeby pojedynczy znak lub fragment nie kasował całej wypowiedzi.
+- Wersja `0.2.8` domyka czwarty etap: poprawia jednosegmentowe etykiety, normalizuje typograficzne separatory i upraszcza własny ekran historii pod TalkBack i WP Festival.
+- Wersja `0.2.9` domyka piąty etap: naprawia dane głosowe dla systemowych ustawień TTS i dodaje pomijanie obcych lub uszkodzonych znaków wewnątrz słów.
+- Stabilny build `arm64-v8a` uzyskałem po przebudowie backendu z mniej agresywnymi flagami:
+  - `-O0`
+  - `-g`
+  - `-fno-strict-aliasing`

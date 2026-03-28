@@ -1,0 +1,21 @@
+
+# Makefile for MicroCruft Visual C++
+
+TOP=..\..
+
+DIRNAME=grammarwfst
+
+todo: default_target
+
+OBJS = EST_WFST.obj wfst_regex.obj wfst_ops.obj wfst_transduce.obj kkcompile.obj wfst_aux.obj ltscompile.obj rgcompile.obj tlcompile.obj wfst_train.obj
+
+CFLAGS = $(DEBUGFLAGS) $(OPTFLAGS) $(INCLUDEFLAGS) 
+
+INLIB = ..\..\$(LIB_DIR)\libestools.lib
+
+ALL = .vcbuildlib
+!include $(TOP)\config\vc_common_make_rules
+
+!include vc_make.depend
+
+
