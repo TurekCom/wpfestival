@@ -29,13 +29,13 @@ This repository is intentionally **source-only**. It does **not** contain the pr
 - signed APK/AAB files
 - signed Windows installers
 
-Those parts are excluded on purpose. See [docs/LEGAL.md](C:\Users\turek\Desktop\wpfestival\docs\LEGAL.md) and [docs/BUILDING.md](C:\Users\turek\Desktop\wpfestival\docs\BUILDING.md).
+Those parts are excluded on purpose. See [docs/LEGAL.md](docs/LEGAL.md) and [docs/BUILDING.md](docs/BUILDING.md).
 
 ## Components
 
 ### Windows SAPI5
 
-Located in [windows/README.md](C:\Users\turek\Desktop\wpfestival\windows\README.md).
+Located in [windows/README.md](windows/README.md).
 
 Highlights:
 - accessible Win32 configuration UI
@@ -45,7 +45,7 @@ Highlights:
 
 ### Android TTS
 
-Located in [android/README.md](C:\Users\turek\Desktop\wpfestival\android\README.md).
+Located in [android/README.md](android/README.md).
 
 Highlights:
 - `TextToSpeechService` for Android
@@ -57,12 +57,17 @@ Highlights:
 
 The original working notes from the reverse-engineering session are preserved as:
 
-- [ANALYSIS.md](C:\Users\turek\Desktop\wpfestival\docs\ANALYSIS.md)
-- [SAPI5_STATUS.md](C:\Users\turek\Desktop\wpfestival\docs\SAPI5_STATUS.md)
-- [ANDROID_WP_FESTIVAL_STATUS.md](C:\Users\turek\Desktop\wpfestival\docs\ANDROID_WP_FESTIVAL_STATUS.md)
+- [ANALYSIS.md](docs/ANALYSIS.md)
+- [SAPI5_STATUS.md](docs/SAPI5_STATUS.md)
+- [ANDROID_WP_FESTIVAL_STATUS.md](docs/ANDROID_WP_FESTIVAL_STATUS.md)
+
+Additional repository documentation:
+
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
+- [CHANGELOG.md](CHANGELOG.md)
 
 ## License
 
-Repository glue code and documentation are provided under the MIT license in [LICENSE](C:\Users\turek\Desktop\wpfestival\LICENSE).
+Repository glue code and documentation are provided under the MIT license in [LICENSE](LICENSE).
 
 Upstream Festival and Speech Tools keep their original licenses in `third_party/`.

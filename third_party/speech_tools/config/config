@@ -218,7 +218,7 @@ INCLUDE_MODULES = SIOD WAGON SCFG WFST OLS RXP
 TERMCAPLIB =
 LINUXAUDIO = none
 
-ANDROID_NDK = /c/Users/turek/AppData/Local/Android/sdk/ndk/28.2.13676358
+ANDROID_NDK = /path/to/android/ndk
 ANDROID_TOOLCHAIN = $(ANDROID_NDK)/toolchains/llvm/prebuilt/windows-x86_64/bin
 CC = $(ANDROID_TOOLCHAIN)/aarch64-linux-android24-clang
 CXX = $(ANDROID_TOOLCHAIN)/aarch64-linux-android24-clang++

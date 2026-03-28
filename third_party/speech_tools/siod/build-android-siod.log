@@ -1,6 +1,0 @@
-making dependencies -- siodeditline.c 
-/c/Users/turek/AppData/Local/Android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/windows-x86_64/bin/x86_64-linux-android24-clang -c -D__isnanf=isnanf -O3 -Wall -I../include siodeditline.c
-look at library estools slib.o slib_core.o slib_doc.o slib_file.o slib_format.o slib_list.o slib_math.o slib_sys.o slib_server.o slib_str.o slib_xtr.o slib_repl.o slib_python.o io.o trace.o siod.o siod_est.o siodeditline.o
-look at library estbase
-look at library eststring
-Update library estools slib.o slib_core.o slib_doc.o slib_file.o slib_format.o slib_list.o slib_math.o slib_sys.o slib_server.o slib_str.o slib_xtr.o slib_repl.o slib_python.o io.o trace.o siod.o siod_est.o siodeditline.o

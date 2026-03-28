@@ -22,7 +22,7 @@ Android source tree for the WP Festival TTS port.
 
 Placeholder locations are kept in the source tree:
 
-- [jniLibs/README.md](C:\Users\turek\Desktop\wpfestival\android\app\src\main\jniLibs\README.md)
-- [runtime/common/README.md](C:\Users\turek\Desktop\wpfestival\android\app\src\main\assets\runtime\common\README.md)
+- [jniLibs/README.md](app/src/main/jniLibs/README.md)
+- [runtime/common/README.md](app/src/main/assets/runtime/common/README.md)
 
-See [docs/BUILDING.md](C:\Users\turek\Desktop\wpfestival\docs\BUILDING.md) for the local build process.
+See [docs/BUILDING.md](../docs/BUILDING.md) for the local build process.

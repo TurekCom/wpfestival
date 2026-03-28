@@ -52,13 +52,13 @@ Stan na 2026-03-28.
 
 ## Artefakty
 - Release APK:
-  - `C:\Users\turek\Desktop\wp\dist\android\WPFestivalAndroid-0.2.12-release.apk`
+  - `dist/android/WPFestivalAndroid-0.2.12-release.apk`
 - Release AAB:
-  - `C:\Users\turek\Desktop\wp\dist\android\WPFestivalAndroid-0.2.12-release.aab`
+  - `dist/android/WPFestivalAndroid-0.2.12-release.aab`
 - Release bundle zip:
-  - `C:\Users\turek\Desktop\wp\dist\android\WPFestivalAndroid-0.2.12-release-bundle.zip`
+  - `dist/android/WPFestivalAndroid-0.2.12-release-bundle.zip`
 - Checksums:
-  - `C:\Users\turek\Desktop\wp\dist\android\WPFestivalAndroid-0.2.12-SHA256.txt`
+  - `dist/android/WPFestivalAndroid-0.2.12-SHA256.txt`
 - Poprzednie artefakty `0.2.1`, `0.2.2`, `0.2.3`, `0.2.5`, `0.2.6`, `0.2.7`, `0.2.8`, `0.2.9`, `0.2.10` i `0.2.11` zostawiłem w `dist\android` do porównania.
 
 ## Ważne uwagi

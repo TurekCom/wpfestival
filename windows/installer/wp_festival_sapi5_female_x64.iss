@@ -1,6 +1,6 @@
 #define AppName "WP Festival SAPI5 Female"
 #define AppVersion "0.4.1"
-#define AppPublisher "OpenAI / turek"
+#define AppPublisher "wpfestival contributors"
 #define EngineDllName "WPFestivalSapi5Female.dll"
 #define ConfigExeName "WPFestivalSapi5FemaleConfig.exe"
 #define VoiceClsid "{22B4CE69-FA37-4A16-93DE-04168FD73A87}"
@@ -13,7 +13,7 @@ AppVersion={#AppVersion}
 AppPublisher={#AppPublisher}
 DefaultDirName={autopf}\WP Festival SAPI5 Female
 DefaultGroupName={#AppName}
-OutputDir=..\dist\installer
+OutputDir=..\..\dist\installer
 OutputBaseFilename=WPFestivalSapi5Female-{#AppVersion}-x64
 Compression=lzma2
 SolidCompression=yes
@@ -28,16 +28,16 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "polish"; MessagesFile: "compiler:Languages\Polish.isl"
 
 [Files]
-Source: "..\sapi5_wp\build-x64\Release\{#EngineDllName}"; DestDir: "{app}\x64"; Flags: ignoreversion
-Source: "..\sapi5_wp\build-x86\Release\{#EngineDllName}"; DestDir: "{app}\x86"; Flags: ignoreversion
-Source: "..\sapi5_wp\build-x64\Release\{#ConfigExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\upstream\festival\src\main\festival.exe"; DestDir: "{app}\x64"; Flags: ignoreversion
-Source: "..\upstream\festival\src\main\festival.exe"; DestDir: "{app}\x86"; Flags: ignoreversion
-Source: "..\wp_runtime_lib\*"; DestDir: "{app}\x64\wp_runtime_lib"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "..\wp_runtime_lib\*"; DestDir: "{app}\x86\wp_runtime_lib"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "..\SAPI5_STATUS.md"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\register_installed_wp_sapi5_female_machinewide.ps1"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\unregister_installed_wp_sapi5_female_machinewide.ps1"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\build\x64\Release\{#EngineDllName}"; DestDir: "{app}\x64"; Flags: ignoreversion
+Source: "..\build\x86\Release\{#EngineDllName}"; DestDir: "{app}\x86"; Flags: ignoreversion
+Source: "..\build\x64\Release\{#ConfigExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\runtime\festival.exe"; DestDir: "{app}\x64"; Flags: ignoreversion
+Source: "..\..\runtime\festival.exe"; DestDir: "{app}\x86"; Flags: ignoreversion
+Source: "..\..\runtime\wp_runtime_lib\*"; DestDir: "{app}\x64\wp_runtime_lib"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\runtime\wp_runtime_lib\*"; DestDir: "{app}\x86\wp_runtime_lib"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\docs\SAPI5_STATUS.md"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\scripts\register_installed_wp_sapi5_female_machinewide.ps1"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\scripts\unregister_installed_wp_sapi5_female_machinewide.ps1"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\Ustawienia WP Festival SAPI5 Female"; Filename: "{app}\{#ConfigExeName}"

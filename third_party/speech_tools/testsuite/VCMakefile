@@ -9,7 +9,7 @@ todo: default_target
 
 OBJS = xml_example.obj string_example.obj hash_example.obj pathname_example.obj track_example.obj token_example.obj complex_example.obj list_example.obj kvl_example.obj handle_example.obj named_enum_example.obj deq_example.obj ling_example.obj feature_example.obj xml_regression.obj string_regression.obj hash_regression.obj pathname_regression.obj track_regression.obj token_regression.obj complex_regression.obj list_regression.obj kvl_regression.obj handle_regression.obj named_enum_regression.obj deq_regression.obj ling_regression.obj feature_regression.obj
 
-CFLAGS = $(DEBUGFLAGS) $(OPTFLAGS) $(INCLUDEFLAGS) /DDATAC=/c/Users/turek/Desktop/wp/upstream/speech_tools/lib
+CFLAGS = $(DEBUGFLAGS) $(OPTFLAGS) $(INCLUDEFLAGS) /DDATAC=..\lib
 
 INLIB = ..\$(LIB_DIR)\libestools.lib
 
@@ -104,5 +104,4 @@ ling_regression.exe : ling_regression.obj  $(AUX_OBJS) $(VCLIBS)
 
 feature_regression.exe : feature_regression.obj  $(AUX_OBJS) $(VCLIBS)
 	link/nologo $(LINKFLAGS) /out:feature_regression.exe feature_regression.obj $(AUX_OBJS) $(VCLIBS) $(WINLIBS)
-
 

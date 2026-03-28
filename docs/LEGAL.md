@@ -15,4 +15,4 @@ It does not publish:
 - signed Windows installers
 - signed Android APK/AAB files
 
-If you have rights to the original WP assets, place them locally in the paths described in [BUILDING.md](C:\Users\turek\Desktop\wpfestival\docs\BUILDING.md). Public GitHub releases from this repository should remain source-only unless you independently clear redistribution rights.
+If you have rights to the original WP assets, place them locally in the paths described in [BUILDING.md](BUILDING.md). Public GitHub releases from this repository should remain source-only unless you independently clear redistribution rights.

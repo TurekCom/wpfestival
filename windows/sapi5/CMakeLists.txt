@@ -14,13 +14,11 @@ set(SPEECHSDK51_ROOT
 )
 
 if(NOT EXISTS "${SPEECHSDK51_ROOT}/Include/sapi.h")
-  set(SPEECHSDK51_ROOT
-    "C:/Users/turek/Desktop/blackbox/tools/SpeechSDK51_admin/program files/Microsoft Speech SDK 5.1"
-  )
+  set(SPEECHSDK51_ROOT "$ENV{SPEECHSDK51_ROOT}")
 endif()
 
 if(NOT EXISTS "${SPEECHSDK51_ROOT}/Include/sapi.h")
-  message(FATAL_ERROR "Nie znaleziono Speech SDK 5.1 headers.")
+  message(FATAL_ERROR "Nie znaleziono Speech SDK 5.1 headers. Ustaw SPEECHSDK51_ROOT lub umiesc SDK pod windows/tools/.")
 endif()
 
 function(add_wp_festival_variant target_name dll_output_name exe_output_name)
