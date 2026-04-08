@@ -15,6 +15,7 @@ For end users:
 
 - Windows installers: https://github.com/TurekCom/wpfestival/releases/tag/windows-sapi5-source-v0.4.1
 - Android APK: https://github.com/TurekCom/wpfestival/releases/tag/android-source-v0.2.12
+- Android Festival variants APKs: https://github.com/TurekCom/wpfestival/releases/tag/android-festival-variants-v0.1.2
 
 For source archives:
 
@@ -35,6 +36,8 @@ For source archives:
 1. Download the `.apk` from the Android release page.
 2. Install the APK and select `WP Festival` as the system TTS engine.
 3. Open the settings screen to choose profile, variant, dictionary file, emoji reading, and punctuation verbosity.
+
+Separate Android builds for `Festival Polski MBROLA` and `Festival Polski Multisyn` are published in the Android Festival variants release.
 
 The git history is intentionally **source-first**. It does **not** track the proprietary WP runtime, voice database, recovered installers, or release keys.
 
